@@ -1,0 +1,11 @@
+.sea {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% + 48px); /* eine Tile-Breite Puffer */
+  height: calc(100% + 48px);
+  background-size: 48px 48px; /* 16px Tile auf 48px skalieren */
+  background-repeat: repeat;
+  image-rendering: pixelated; /* scharfe Pixel statt Matsch */
+  will-change: transform; /* eigene GPU-Ebene */
+}
