@@ -1,3 +1,3 @@
-# Insane Banger Game von Gero und Jannes
+# Insane Banger Game vom Oreo und Jannes
 
 yo
