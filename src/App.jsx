@@ -1,35 +1,46 @@
 import { useState } from "react";
 import "./App.css";
-import { Sea } from "./components/sea/Sea";
+import Sea from "./components/sea/Sea";
 import useGameLoop from "./hooks/useGameLoop";
-import { useKeyboard } from "./hooks/useKeyboard";
+import useKeyboard from "./hooks/useKeyboard";
 import Boat from "./components/boat/Boat";
+import updateCamera from "./game/camera";
+import getDirection from "./game/input";
+
+const DEADZONE = 200;
+const SPEED = 200; // px pro Sekunde
 
 function App() {
-  const [cam, setCam] = useState({ x: 0, y: 0 });
+  // linke obere Ecke der sichtbaren Welt
+  const [camPos, setCamPos] = useState({ x: 0, y: 0 });
+  // Mitte des Boots
+  const [boatPos, setBoatPos] = useState({ x: 350, y: 200 });
+
+  const boatScreenPos = { x: boatPos.x - camPos.x, y: boatPos.y - camPos.y };
 
   const keys = useKeyboard();
-  const SPEED = 200; // px pro Sekunde
 
   useGameLoop((dt) => {
-    const k = keys.current;
+    const direction = getDirection(keys.current);
+    const newBoatPos = { x: boatPos.x + direction.x * SPEED * dt, y: boatPos.y + direction.y * SPEED * dt };
 
-    const dx = (k.has("d") || k.has("arrowright") ? 1 : 0) - (k.has("a") || k.has("arrowleft") ? 1 : 0);
-    const dy = (k.has("s") || k.has("arrowdown") ? 1 : 0) - (k.has("w") || k.has("arrowup") ? 1 : 0);
+    // nur update, wenn Boot sich bewegt hat
+    if (boatPos.x !== newBoatPos.x || boatPos.y !== newBoatPos.y) {
+      setBoatPos(newBoatPos);
+    }
 
-    const len = Math.hypot(dx, dy); // Pythagoras
-    if (len > 0) {
-      const nx = dx / len;
-      const ny = dy / len;
+    const newCamPos = updateCamera(newBoatPos, camPos, DEADZONE);
 
-      if (nx || ny) setCam((current) => ({ x: current.x + nx * SPEED * dt, y: current.y + ny * SPEED * dt }));
+    // nur update, wenn Camera sich bewegt hat
+    if (camPos.x !== newCamPos.x || camPos.y !== newCamPos.y) {
+      setCamPos(newCamPos);
     }
   });
 
   return (
-    <div style={{ position: "relative", width: "100vw", height: "100vh", overflow: "hidden" }}>
-      <Boat />
-      <Sea camX={cam.x} camY={cam.y} />
+    <div className="main">
+      <Boat x={boatScreenPos.x} y={boatScreenPos.y} />
+      <Sea camX={camPos.x} camY={camPos.y} />
     </div>
   );
 }

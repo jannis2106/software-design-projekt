@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-export function useKeyboard() {
+export default function useKeyboard() {
   const keys = useRef(new Set());
 
   useEffect(() => {

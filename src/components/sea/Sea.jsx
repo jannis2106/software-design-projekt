@@ -1,12 +1,12 @@
-import waterUrl from "../../assets/water.png"
-import "./Sea.css"
+import waterUrl from "../../assets/water.png";
+import "./Sea.css";
 
-export const TILE = 48 // 16px * 3
+export const TILE = 48; // 16px * 3
 
 // mod, aber bleibt positiv
 const mod = (n, m) => ((n % m) + m) % m;
 
-export function Sea({ camX, camY }) {
+export default function Sea({ camX, camY }) {
   const ox = -Math.round(mod(camX, TILE));
   const oy = -Math.round(mod(camY, TILE));
 
@@ -16,6 +16,9 @@ export function Sea({ camX, camY }) {
       style={{
         backgroundImage: `url(${waterUrl})`,
         transform: `translate3d(${ox}px, ${oy}px, 0)`,
+        width: `calc(100% + ${TILE}px)`,
+        height: `calc(100% + ${TILE}px)`,
+        backgroundSize: `${TILE}px ${TILE}px`,
       }}
     />
   );
