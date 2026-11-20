@@ -39,6 +39,11 @@ function App() {
 
   return (
     <div className="main">
+      <div className="coords">
+        <p>
+          {Math.round(boatPos.x)} / {Math.round(boatPos.y)}
+        </p>
+      </div>
       <Boat x={boatScreenPos.x} y={boatScreenPos.y} />
       <Sea camX={camPos.x} camY={camPos.y} />
     </div>

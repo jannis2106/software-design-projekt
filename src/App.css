@@ -4,3 +4,15 @@
   height: 100vh;
   overflow: hidden;
 }
+
+.coords {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  color: white;
+}
+
+.coords p {
+  margin: 20px;
+}
