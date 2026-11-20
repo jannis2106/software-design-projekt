@@ -2,6 +2,40 @@
 
 yo
 
+## Ideen
+
+- Raft als Inspiration
+- Modulares Floß
+- Ressourcen Management
+- Gegner
+
+#### Floß-Module
+
+- [ ] Sammeln
+- [ ] Lagerung
+- [ ] Herstellen
+- [ ] Gärtner-System
+- [ ] Kanonen
+- [ ] Steuerung (Segel, Steuerrad, Motoren)
+
+#### Gegner
+
+- [ ] Affen-Piraten (verschiedene Floßgrößen)
+- [ ] Kraken
+
+#### Tag/Nacht Zyklus
+
+- [ ] Mehr (oder nur) Gegner bei Nacht
+- [ ] verschiedene Ressources je nach Tageszeit
+
+#### Erweiterungen (nur falls noch Zeit)
+
+- [ ] Prozeduale Generation von Inseln
+- [ ] Mehr Gegner
+- [ ] Mehr Floß-Module
+- [ ] Multiplayer
+
+## Shrek
 
 ```
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣤⣤⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
